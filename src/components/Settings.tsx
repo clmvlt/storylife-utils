@@ -447,7 +447,7 @@ export default function Settings() {
           <CardContent>
             <dl className="space-y-3 text-sm">
               {[
-                ["Version", "1.0.0"],
+                ["Version", "1.0.1"],
                 ["Serveur", "StoryLife"],
                 ["URI", "cfx.re/join/aaex7k"],
                 ["OCR", "Windows OCR (natif)"],

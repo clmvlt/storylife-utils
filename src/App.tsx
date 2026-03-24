@@ -2,11 +2,12 @@ import { useState } from "react";
 import Dashboard from "@/components/Dashboard";
 import Settings from "@/components/Settings";
 import DebugSteps from "@/components/DebugSteps";
-import Muscu from "@/components/Muscu";
-import Mining from "@/components/Mining";
+// Temporarily disabled
+// import Muscu from "@/components/Muscu";
+// import Mining from "@/components/Mining";
 import { useTauriEvents } from "@/hooks/useTauriEvents";
-import { useMuscuEvents } from "@/hooks/useMuscuEvents";
-import { useMiningEvents } from "@/hooks/useMiningEvents";
+// import { useMuscuEvents } from "@/hooks/useMuscuEvents";
+// import { useMiningEvents } from "@/hooks/useMiningEvents";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -21,6 +22,9 @@ import {
 } from "lucide-react";
 
 type Page = "dashboard" | "muscu" | "mining" | "settings" | "debug";
+
+// Temporarily disabled pages
+const DISABLED_PAGES: Page[] = ["muscu", "mining"];
 
 const TABS = [
   {
@@ -58,18 +62,20 @@ const TABS = [
     activeColors: "border-zinc-400 text-zinc-300",
     dotColor: "bg-zinc-400",
   },
-];
+].filter((tab) => !DISABLED_PAGES.includes(tab.id));
 
 export default function App() {
   const [page, setPage] = useState<Page>("dashboard");
   const { status, logs, clearLogs, windowInfo } = useTauriEvents();
-  const { muscuStatus, muscuLogs, clearMuscuLogs } = useMuscuEvents();
-  const { miningStatus, miningLogs, clearMiningLogs } = useMiningEvents();
+  // Temporarily disabled
+  // const { muscuStatus, muscuLogs, clearMuscuLogs } = useMuscuEvents();
+  // const { miningStatus, miningLogs, clearMiningLogs } = useMiningEvents();
 
   const isRunning = (id: Page) => {
     if (id === "dashboard") return status.running;
-    if (id === "muscu") return muscuStatus.running;
-    if (id === "mining") return miningStatus.running;
+    // Temporarily disabled
+    // if (id === "muscu") return muscuStatus.running;
+    // if (id === "mining") return miningStatus.running;
     return false;
   };
 
@@ -163,24 +169,7 @@ export default function App() {
             />
           </div>
         )}
-        {page === "muscu" && (
-          <div className="h-full animate-fade-in">
-            <Muscu
-              muscuStatus={muscuStatus}
-              muscuLogs={muscuLogs}
-              onClearLogs={clearMuscuLogs}
-            />
-          </div>
-        )}
-        {page === "mining" && (
-          <div className="h-full animate-fade-in">
-            <Mining
-              miningStatus={miningStatus}
-              miningLogs={miningLogs}
-              onClearLogs={clearMiningLogs}
-            />
-          </div>
-        )}
+        {/* Temporarily disabled: Muscu & Mining pages */}
         {page === "settings" && (
           <div className="h-full animate-fade-in">
             <Settings />

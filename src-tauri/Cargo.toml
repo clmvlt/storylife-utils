@@ -1,6 +1,6 @@
 [package]
 name = "storylifeutils"
-version = "1.0.0"
+version = "1.0.1"
 description = "StoryLifeUtils - Automatisation pour StoryLife"
 authors = ["DIMZOU"]
 edition = "2021"
